@@ -1,0 +1,44 @@
+/* Resetting default margin and padding for better styling */
+body,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    /* Background color of the menu */
+}
+
+ul {
+    list-style-type: none;
+    /* Remove bullet points from the list */
+    text-align: center;
+    /* Center align the list items */
+}
+
+li {
+    display: inline-block;
+    /* Display list items in a row */
+    margin-right: 20px;
+    /* Add some spacing between list items */
+}
+
+a {
+    color: #fff;
+    /* Text color */
+    text-decoration: none;
+    /* Remove underline from links */
+    padding: 10px;
+    /* Add padding to make clickable area larger */
+}
+
+a:hover {
+    background-color: #555;
+    /* Change background color on hover */
+}
+
+.myfont {
+    color: aqua;
+    font-weight: 500;
+}
