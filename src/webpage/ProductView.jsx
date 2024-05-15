@@ -21,7 +21,7 @@ function ProductView(props) {
 	// Call API
 	const fetchData = async () => {
 		await axios
-			.get("http://localhost:9999/tds/getProductByProductName", {
+			.get("http://localhost:9999/tds/product/getProductByProductName", {
 				params: {
 					keyword: inputValue,
 				},

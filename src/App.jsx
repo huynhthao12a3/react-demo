@@ -6,6 +6,9 @@ import Menu from "./webpage/Menu";
 import ProductView from "./webpage/ProductView";
 import EmployeeView from "./webpage/EmployeeView";
 import Footer from "./webpage/Footer";
+import TableView from "./webpage/TableView";
+import NewProduct from "./webpage/NewProduct";
+import "./webpage/css/bootstrap.min.css";
 
 function App() {
 	const [value, setValue] = useState(0);
@@ -17,11 +20,13 @@ function App() {
 			<Menu value={value} />
 			{/* <Content contentFromParent="Message from parent." /> */}
 			{/* <FormInputDemo /> */}
-			<h1>Product List</h1>
-			<ProductView />
+			{/* <h1>Product List</h1> */}
+			{/* <ProductView /> */}
 
-			<h1>Employee List</h1>
-			<EmployeeView />
+			{/* <h1>Employee List</h1> */}
+			{/* <EmployeeView /> */}
+			{/* <TableView /> */}
+			<NewProduct />
 			<Footer />
 			<button onClick={increment}>Increment</button>
 			{/* <div>

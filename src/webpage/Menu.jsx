@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../webpage/style.css";
 
 function Menu(props) {
@@ -7,22 +8,22 @@ function Menu(props) {
 			<nav>
 				<ul>
 					<li>
-						<a className="myfont" href="#">
+						<Link to="/app" className="myfont">
 							Home
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href="#">About</a>
+						<Link to="/about">About</Link>
 					</li>
 					<li>
-						<a href="#">Services</a>
+						<Link to="/contact-us">Contact Us</Link>
 					</li>
 					<li>
-						<a href="#">Contact</a>
+						<Link to="/login">Login</Link>
 					</li>
-					<li>
+					{/* <li>
 						<a href="#">Shopping Card {props.value}</a>
-					</li>
+					</li> */}
 				</ul>
 			</nav>
 		</div>
