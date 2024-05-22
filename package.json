@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "3": "^2.1.0",
+    "-": "^0.0.1",
+    "@popperjs/core": "2.11.8",
     "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
     "query-string": "^9.0.0",
     "react": "^18.2.0",
     "react-crud-table": "^0.3.1",
