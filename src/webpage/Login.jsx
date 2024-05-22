@@ -36,7 +36,7 @@ function Login(props) {
 				if (response.data.token) {
 					console.log("Login success.");
 					localStorage.setItem("token", response.data.token);
-					navigate("/app");
+					navigate("/home");
 				}
 				// }
 			})

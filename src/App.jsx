@@ -9,6 +9,8 @@ import Footer from "./webpage/Footer";
 import TableView from "./webpage/TableView";
 import NewProduct from "./webpage/NewProduct";
 import "./webpage/common/css/bootstrap.min.css";
+import "./webpage/common/bootstrap/jquery.slim.min.js";
+import "./webpage/common/bootstrap/bootstrap.min.js";
 import Navigation from "./webpage/common/components/Navigation";
 
 function App() {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { productApi } from "../api";
 
 function NewProduct(props) {
 	// define formData
@@ -34,21 +35,23 @@ function NewProduct(props) {
 		fetchData();
 	};
 	const fetchData = async () => {
-		await axios
-			.post("http://localhost:9999/tds/product/createProduct", formData, {
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
-			.then(function (response) {
-				// if (response.ok) {
-				console.log(response);
-				alert(response.data);
-				// }
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		// await axios
+		// 	.post("http://localhost:9999/tds/product/createProduct", formData, {
+		// 		headers: {
+		// 			"Content-Type": "application/json",
+		// 		},
+		// 	})
+		// 	.then(function (response) {
+		// 		// if (response.ok) {
+		// 		console.log(response);
+		// 		alert(response.data);
+		// 		// }
+		// 	})
+		// 	.catch(function (error) {
+		// 		console.log(error);
+		// 	});
+		const response = await productApi.createProduct(formData);
+		console.log(response);
 	};
 	return (
 		<>
