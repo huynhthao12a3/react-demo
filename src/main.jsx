@@ -11,6 +11,8 @@ import About from "./webpage/components/About";
 import Contact from "./webpage/components/Contact";
 import Navigation from "./webpage/common/components/Navigation";
 import Footer from "./webpage/Footer.jsx";
+import ProductView from "./webpage/ProductView.jsx";
+import NewProduct from "./webpage/NewProduct.jsx";
 
 const hasToken = !!localStorage.getItem("token");
 
@@ -37,6 +39,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 					{/* <Route path="/" element={<Login />}></Route> */}
 					{/* <Route path="/about" element={<About />}></Route> */}
 					<Route path="/" element={<Login />}></Route>
+					<Route path="/product" element={<ProductView />}></Route>
+					<Route path="/new-product" element={<NewProduct />}></Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>
