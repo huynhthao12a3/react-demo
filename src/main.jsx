@@ -9,10 +9,12 @@ import Login from "./webpage/Login.jsx";
 import Home from "./webpage/components/Home";
 import About from "./webpage/components/About";
 import Contact from "./webpage/components/Contact";
-import Navigation from "./webpage/common/components/Navigation";
+import { Navigation } from "./webpage/common/components";
 import Footer from "./webpage/Footer.jsx";
 import ProductView from "./webpage/ProductView.jsx";
 import NewProduct from "./webpage/NewProduct.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 
 const hasToken = !!localStorage.getItem("token");
 

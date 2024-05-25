@@ -12,11 +12,11 @@ const productApi = {
 	},
 	getProductByName: (productName) => {
 		const url = "/tds/product/getProductByName";
-		return axiosClient.get(url, { params: productName });
+		return axiosClient.get(url, { params: { productName: productName } });
 	},
 	deleteProductById: (productId) => {
 		const url = "/tds/product/deleteProductById";
-		return axiosClient.delete(url, { params: productId });
+		return axiosClient.delete(url, { params: { productId: productId } });
 	},
 	createProduct: (product) => {
 		const url = "/tds/product/createProduct";

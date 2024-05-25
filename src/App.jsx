@@ -8,8 +8,7 @@ import EmployeeView from "./webpage/EmployeeView";
 import Footer from "./webpage/Footer";
 import TableView from "./webpage/TableView";
 import NewProduct from "./webpage/NewProduct";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+
 import Navigation from "./webpage/common/components/Navigation";
 
 function App() {
