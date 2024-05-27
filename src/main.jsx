@@ -15,16 +15,19 @@ import ProductView from "./webpage/ProductView.jsx";
 import NewProduct from "./webpage/NewProduct.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const hasToken = !!localStorage.getItem("token");
 
 function BasicLayout() {
 	return (
-		<>
+		<div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
 			<Navigation />
-			<Outlet />
+			<main className=" flex-grow-1">
+				<Outlet />
+			</main>
 			<Footer />
-		</>
+		</div>
 	);
 }
 
