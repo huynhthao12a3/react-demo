@@ -23,7 +23,7 @@ function BasicLayout() {
 	return (
 		<div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
 			<Navigation />
-			<main className=" flex-grow-1">
+			<main className=" flex-grow-1 py-5">
 				<Outlet />
 			</main>
 			<Footer />

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { productApi } from "../api";
 import { ModalProduct } from "./common/components";
+import { Button, FloatingLabel, Form, Table } from "react-bootstrap";
+import swal from "sweetalert";
 
 function ProductView(props) {
 	// Hook
@@ -28,6 +30,10 @@ function ProductView(props) {
 		const response = await productApi.getProductByName(inputValue);
 		setData(response.data);
 	};
+	const deleteData = async (productId) => {
+		const response = await productApi.deleteProductById(productId);
+		return response;
+	};
 
 	// Add _ Update _ Delete
 	const handleAddNewProduct = () => {
@@ -50,14 +56,25 @@ function ProductView(props) {
 		setProductInformation(item);
 		setShowModalNewProduct(true);
 	};
-	const handleDeleteProduct = async (event) => {
-		const response = await productApi.deleteProductById(event.target.value);
-		fetchData();
+	const handleDeleteProduct = (item) => {
+		swal({
+			title: "Are you sure?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then(async (willDelete) => {
+			if (willDelete) {
+				const response = await productApi.deleteProductById(item.productId);
+				if (response.isSuccess) {
+					swal("Success", response.data, "success");
+					fetchData();
+				}
+			}
+		});
 	};
 
 	// Show _ hide modal
 	const handleHideModal = () => {
-		console.log("Hide");
 		setShowModalNewProduct(false);
 	};
 
@@ -73,29 +90,23 @@ function ProductView(props) {
 	return (
 		<>
 			<div>
-				<div>
+				<div className="mb-5">
 					<form onSubmit={handleSubmit} className="form-inline">
-						<div className="form-group mx-sm-3 mb-2">
-							<input value={inputValue} onChange={handleInputChange} name="id" type="text" className="form-control" id="search" placeholder="id" />
-							<button style={{ marginTop: 30 }} type="submit" className="btn btn-primary mb-2">
-								<i className="bi bi-search"></i>
-							</button>
+						<div className="d-flex mx-4 p-4 border border-3 rounded">
+							<FloatingLabel label="Search by Product Name..." className="flex-grow-1">
+								<Form.Control value={inputValue} onChange={handleInputChange} name="id" type="text" id="search" placeholder="id" />
+							</FloatingLabel>
+							<Button type="submit" variant="primary" className="px-4 mx-2">
+								<i className="bi bi-search fs-3"></i>
+							</Button>
+							<Button type="button" variant="success" className="px-4 mx-2" onClick={handleAddNewProduct} data-toggle="modal" data-target="#popupNewProduct">
+								<i className="bi bi-plus-circle fs-3"></i>
+							</Button>
 						</div>
-
-						<button
-							style={{ marginLeft: 50, marginTop: 30 }}
-							type="button"
-							className="btn btn-success mb-2"
-							onClick={handleAddNewProduct}
-							data-toggle="modal"
-							data-target="#popupNewProduct"
-						>
-							<i className="bi bi-plus-circle"></i>
-						</button>
 					</form>
 				</div>
 
-				<table className="table table-hover table-striped ">
+				<Table striped bordered hover responsive>
 					<thead className="thead-light">
 						<tr>
 							<th>Product Name</th>
@@ -121,20 +132,20 @@ function ProductView(props) {
 								<td>{item.expiredDate}</td>
 								<td>{item.image}</td>
 								<td className="d-flex justify-content-around">
-									<button className="btn btn-info" onClick={() => handleInfoProduct(item)}>
+									<Button variant="info" onClick={() => handleInfoProduct(item)}>
 										<i className="bi bi-info-circle"></i>
-									</button>
-									<button className="btn btn-success" onClick={() => handleUpdateProduct(item)}>
+									</Button>
+									<Button variant="success" onClick={() => handleUpdateProduct(item)}>
 										<i className="bi bi-pencil-square"></i>
-									</button>
-									<button className="btn btn-danger" onClick={handleDeleteProduct} value={item.productId}>
+									</Button>
+									<Button variant="danger" onClick={() => handleDeleteProduct(item)}>
 										<i className="bi bi-x-circle"></i>
-									</button>
+									</Button>
 								</td>
 							</tr>
 						))}
 					</tbody>
-				</table>
+				</Table>
 			</div>
 
 			{showModalNewProduct && <ModalProduct modalProps={modalProps} />}

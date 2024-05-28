@@ -15,6 +15,7 @@ axiosClient.interceptors.request.use(
 		console.group("=====> Request:");
 		console.log("Url: ", config.url);
 		console.log("Params: ", config.params);
+		console.log("Data: ", config.data);
 		console.groupEnd();
 		return config;
 	},
