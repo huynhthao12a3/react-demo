@@ -16,6 +16,7 @@ import NewProduct from "./webpage/NewProduct.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import FileView from "./webpage/FileView.jsx";
 
 const hasToken = !!localStorage.getItem("token");
 
@@ -45,6 +46,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 					{/* <Route path="/about" element={<About />}></Route> */}
 					<Route path="/" element={<Login />}></Route>
 					<Route path="/product" element={<ProductView />}></Route>
+					<Route path="/file" element={<FileView />}></Route>
 					<Route path="/new-product" element={<NewProduct />}></Route>
 				</Route>
 			</Routes>

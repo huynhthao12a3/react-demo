@@ -1,3 +1,4 @@
 import productApi from "./Product";
+import fileApi from "./File";
 
-export { productApi };
+export { productApi, fileApi };

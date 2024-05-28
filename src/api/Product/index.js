@@ -1,6 +1,5 @@
 import axiosClient from "../axiosClient";
 
-let url = "";
 const productApi = {
 	getAllProduct: () => {
 		const url = "/tds/product/getAllProduct";
