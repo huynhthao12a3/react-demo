@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import swal from "sweetalert";
 import { fileApi, productApi } from "../../../api";
+import { put } from "@vercel/blob";
 
 function ModalProduct(props) {
 	console.log(props);
@@ -61,6 +62,13 @@ function ModalProduct(props) {
 		// });
 	};
 
+	const handleImageChange1 = async (event) => {
+		const formDataImage = new FormData();
+		formDataImage.append("file", event.target.files[0]);
+		const blob = await put(event.target.files[0].name, event.target.files[0], { access: "public" });
+		console.log("=> vercel image: ", blob);
+	};
+
 	const handleSubmit = async () => {
 		console.log("formData", formData);
 		const response = await productApi.createProduct(formData);
@@ -111,7 +119,14 @@ function ModalProduct(props) {
 							<Form.Group as={Col} className="mb-3">
 								<InputGroup>
 									<FloatingLabel label="Input Price" controlId="floatingInputPrice">
-										<Form.Control type="number" placeholder="Input Price" name="inputPrice" onChange={handleInputChange} value={formData.inputPrice} disabled={disabledCondition} />
+										<Form.Control
+											type="number"
+											placeholder="Input Price"
+											name="inputPrice"
+											onChange={handleInputChange}
+											value={formData.inputPrice}
+											disabled={disabledCondition}
+										/>
 									</FloatingLabel>
 									<InputGroup.Text>$</InputGroup.Text>
 								</InputGroup>
@@ -140,7 +155,11 @@ function ModalProduct(props) {
 										placeholder="Input Date"
 										name="inputDate"
 										onChange={handleInputChange}
-										value={formData.inputDate ? new Date(formData.inputDate).toISOString().substring(0, 10) : new Date("1970-01-01").toISOString().substring(0, 10)}
+										value={
+											formData.inputDate
+												? new Date(formData.inputDate).toISOString().substring(0, 10)
+												: new Date("1970-01-01").toISOString().substring(0, 10)
+										}
 										disabled={disabledCondition}
 									/>
 								</FloatingLabel>
@@ -152,7 +171,11 @@ function ModalProduct(props) {
 										placeholder="Expired Date"
 										name="expiredDate"
 										onChange={handleInputChange}
-										value={formData.expiredDate ? new Date(formData.expiredDate).toISOString().substring(0, 10) : new Date("1970-01-01").toISOString().substring(0, 10)}
+										value={
+											formData.expiredDate
+												? new Date(formData.expiredDate).toISOString().substring(0, 10)
+												: new Date("1970-01-01").toISOString().substring(0, 10)
+										}
 										disabled={disabledCondition}
 									/>
 								</FloatingLabel>
@@ -161,12 +184,25 @@ function ModalProduct(props) {
 						<Row>
 							<Form.Group as={Col} className="mb-3">
 								<FloatingLabel label="Quantity" controlId="floatingQuantity">
-									<Form.Control type="number" placeholder="Quantity" name="quantity" onChange={handleInputChange} value={formData.quantity} disabled={disabledCondition} />
+									<Form.Control
+										type="number"
+										placeholder="Quantity"
+										name="quantity"
+										onChange={handleInputChange}
+										value={formData.quantity}
+										disabled={disabledCondition}
+									/>
 								</FloatingLabel>
 							</Form.Group>
 							<Form.Group as={Col} className="mb-3">
 								<FloatingLabel label="Image" controlId="floatingImage">
-									<Form.Control type="file" accept="image/*" name="image" onChange={handleImageChange} disabled={disabledCondition} />
+									<Form.Control
+										type="file"
+										accept="image/*"
+										name="image"
+										onChange={handleImageChange1}
+										disabled={disabledCondition}
+									/>
 								</FloatingLabel>
 							</Form.Group>
 						</Row>
