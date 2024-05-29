@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { productApi } from "../api";
-import { ModalProduct } from "./common/components";
-import { Button, FloatingLabel, Form, Table } from "react-bootstrap";
+import { fileApi, productApi } from "../api";
+import { ImageItem, ModalProduct } from "./common/components";
+import { Button, FloatingLabel, Form, Image, Table } from "react-bootstrap";
 import swal from "sweetalert";
 
 function ProductView(props) {
@@ -33,6 +33,9 @@ function ProductView(props) {
 	const deleteData = async (productId) => {
 		const response = await productApi.deleteProductById(productId);
 		return response;
+	};
+	const fetchImage = async (filePath) => {
+		const response = await fileApi.getFileInfo(filePath);
 	};
 
 	// Add _ Update _ Delete
@@ -66,7 +69,7 @@ function ProductView(props) {
 			if (willDelete) {
 				const response = await productApi.deleteProductById(item.productId);
 				if (response.isSuccess) {
-					swal("Success", response.data, "success");
+					swal("Success", response.message, "success");
 					fetchData();
 				}
 			}
@@ -130,7 +133,9 @@ function ProductView(props) {
 								<td>{item.inputDate}</td>
 								<td>{item.quantity}</td>
 								<td>{item.expiredDate}</td>
-								<td>{item.image}</td>
+								<td>
+									<ImageItem filePath={item.image} height={50} />
+								</td>
 								<td className="d-flex justify-content-around">
 									<Button variant="info" onClick={() => handleInfoProduct(item)}>
 										<i className="bi bi-info-circle"></i>

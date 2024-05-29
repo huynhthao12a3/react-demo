@@ -37,7 +37,7 @@ function FileView(props) {
 							<td>{item.fileSize} KB</td>
 							<td>{item.filePath}</td>
 							<td>
-								<Image src={"data:image/jpeg;base64," + item.fileContent} thumbnail width={80} />
+								<Image src={item.fileData} thumbnail width={80} />
 							</td>
 						</tr>
 					))}

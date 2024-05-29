@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import swal from "sweetalert";
-import { productApi } from "../../../api";
+import { fileApi, productApi } from "../../../api";
 
 function ModalProduct(props) {
 	console.log(props);
@@ -30,19 +30,29 @@ function ModalProduct(props) {
 		});
 	};
 
-	const handleImageChange = (event) => {
+	const handleImageChange = async (event) => {
 		console.log(event.target.files[0]);
-		const reader = new FileReader();
-		const encoder = new TextEncoder();
-		reader.readAsDataURL(event.target.files[0]);
-		reader.onloadend = (progressEvent) => {
-			console.log(encoder.encode(progressEvent.target.result));
+		// const reader = new FileReader();
+		// const encoder = new TextEncoder();
+		// reader.readAsDataURL(event.target.files[0]);
+		// reader.onloadend = (progressEvent) => {
+		// 	console.log(encoder.encode(progressEvent.target.result));
+		// 	setFormData({
+		// 		...formData,
+		// 		[event.target.name]: encoder.encode(progressEvent.target.result),
+		// 	});
+		// 	console.log(formData);
+		// };
+		const formDataImage = new FormData();
+		formDataImage.append("file", event.target.files[0]);
+		const response = await fileApi.saveFile(formDataImage);
+		if (response.isSuccess) {
 			setFormData({
 				...formData,
-				[event.target.name]: encoder.encode(progressEvent.target.result),
+				[event.target.name]: response.data.filePath,
 			});
-			console.log(formData);
-		};
+		}
+		console.log("handleImageChange: ", response);
 		// console.log(reader.result);
 		// setTimeout(() => console.log(reader.result), 1000);
 		// setFormData({

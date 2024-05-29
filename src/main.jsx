@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import FileView from "./webpage/FileView.jsx";
+import { Container } from "react-bootstrap";
 
 const hasToken = !!localStorage.getItem("token");
 
@@ -24,9 +25,9 @@ function BasicLayout() {
 	return (
 		<div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
 			<Navigation />
-			<main className=" flex-grow-1 py-5">
+			<Container fluid className="flex-grow-1 py-5">
 				<Outlet />
-			</main>
+			</Container>
 			<Footer />
 		</div>
 	);
