@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { fileApi, productApi } from "../api";
-import { ImageItem, ModalProduct } from "./common/components";
+import { fileApi, productApi } from "../../api";
+import { ImageItem, ModalProduct } from "../common/components";
 import { Button, FloatingLabel, Form, Image, Table } from "react-bootstrap";
 import swal from "sweetalert";
 

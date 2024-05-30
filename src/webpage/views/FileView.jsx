@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fileApi } from "../api";
+import { fileApi } from "../../api";
 import swal from "sweetalert";
 import { Image, Table } from "react-bootstrap";
 

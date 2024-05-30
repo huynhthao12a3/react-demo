@@ -176,7 +176,7 @@ function ModalProduct(props) {
 							</Form.Group>
 							<Form.Group as={Col} className="mb-3">
 								<FloatingLabel label="Image" controlId="floatingImage">
-									<Form.Control type="file" accept="image/*" name="image" onChange={handleImageChange1} disabled={disabledCondition} />
+									<Form.Control type="file" accept="image/*" name="image" onChange={handleImageChange} disabled={disabledCondition} />
 								</FloatingLabel>
 							</Form.Group>
 						</Row>
