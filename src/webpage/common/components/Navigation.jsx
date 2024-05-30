@@ -31,6 +31,10 @@ function Navigation(props) {
 						<NavLink className="nav-link mx-2" to="/product">
 							<i className="bi bi-menu-down me-1"></i>Product
 						</NavLink>
+						<NavLink className="nav-link mx-2" to="/employee">
+							<i className="bi bi-person-square me-1"></i>Employee
+						</NavLink>
+
 						<NavLink className="nav-link mx-2" to="/file">
 							<i className="bi bi-file-earmark-code me-1"></i>File
 						</NavLink>

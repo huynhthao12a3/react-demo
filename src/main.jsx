@@ -12,7 +12,7 @@ import { Container } from "react-bootstrap";
 // Component
 import { Footer, Navigation, ImageItem } from "./webpage/common/components";
 import { About, Contact, Home, Login } from "./webpage/components";
-import { FileView, ProductView } from "./webpage/views";
+import { EmployeeView, FileView, ProductView } from "./webpage/views";
 
 const hasToken = !!localStorage.getItem("token");
 
@@ -38,6 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 					<Route path="/about" element={hasToken ? <About /> : <Login />}></Route>
 					<Route path="/contact" element={hasToken ? <Contact /> : <Login />}></Route>
 					<Route path="/product" element={<ProductView />}></Route>
+					<Route path="/employee" element={<EmployeeView />}></Route>
 					<Route path="/file" element={<FileView />}></Route>
 					<Route path="/" element={<Login />}></Route>
 				</Route>

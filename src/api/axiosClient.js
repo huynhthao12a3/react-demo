@@ -3,7 +3,7 @@ import queryString from "query-string";
 
 // Set config defaults when creating the instance
 const axiosClient = axios.create({
-	baseURL: "http://localhost:9999",
+	baseURL: process.env.BLOB_SPRING_BOOT_API_URL,
 	headers: { "Content-Type": "application/json" },
 	paramsSerializer: (params) => queryString.stringify(params),
 });
