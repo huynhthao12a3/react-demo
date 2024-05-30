@@ -8,8 +8,8 @@ import { fileApi, productApi } from "../../../api";
 import { put } from "@vercel/blob";
 
 function ModalProduct(props) {
-	// console.log(process.env.BLOB_READ_WRITE_TOKEN);
-	// console.log(import.meta.env.BLOB_READ_WRITE_TOKEN);
+	console.log(process.env.BLOB_READ_WRITE_TOKEN);
+	console.log(import.meta.env.BLOB_READ_WRITE_TOKEN);
 	console.log(props);
 	if (!props.modalProps) {
 		props.modalProps = {
@@ -121,14 +121,7 @@ function ModalProduct(props) {
 							<Form.Group as={Col} className="mb-3">
 								<InputGroup>
 									<FloatingLabel label="Input Price" controlId="floatingInputPrice">
-										<Form.Control
-											type="number"
-											placeholder="Input Price"
-											name="inputPrice"
-											onChange={handleInputChange}
-											value={formData.inputPrice}
-											disabled={disabledCondition}
-										/>
+										<Form.Control type="number" placeholder="Input Price" name="inputPrice" onChange={handleInputChange} value={formData.inputPrice} disabled={disabledCondition} />
 									</FloatingLabel>
 									<InputGroup.Text>$</InputGroup.Text>
 								</InputGroup>
@@ -157,11 +150,7 @@ function ModalProduct(props) {
 										placeholder="Input Date"
 										name="inputDate"
 										onChange={handleInputChange}
-										value={
-											formData.inputDate
-												? new Date(formData.inputDate).toISOString().substring(0, 10)
-												: new Date("1970-01-01").toISOString().substring(0, 10)
-										}
+										value={formData.inputDate ? new Date(formData.inputDate).toISOString().substring(0, 10) : new Date("1970-01-01").toISOString().substring(0, 10)}
 										disabled={disabledCondition}
 									/>
 								</FloatingLabel>
@@ -173,11 +162,7 @@ function ModalProduct(props) {
 										placeholder="Expired Date"
 										name="expiredDate"
 										onChange={handleInputChange}
-										value={
-											formData.expiredDate
-												? new Date(formData.expiredDate).toISOString().substring(0, 10)
-												: new Date("1970-01-01").toISOString().substring(0, 10)
-										}
+										value={formData.expiredDate ? new Date(formData.expiredDate).toISOString().substring(0, 10) : new Date("1970-01-01").toISOString().substring(0, 10)}
 										disabled={disabledCondition}
 									/>
 								</FloatingLabel>
@@ -186,25 +171,12 @@ function ModalProduct(props) {
 						<Row>
 							<Form.Group as={Col} className="mb-3">
 								<FloatingLabel label="Quantity" controlId="floatingQuantity">
-									<Form.Control
-										type="number"
-										placeholder="Quantity"
-										name="quantity"
-										onChange={handleInputChange}
-										value={formData.quantity}
-										disabled={disabledCondition}
-									/>
+									<Form.Control type="number" placeholder="Quantity" name="quantity" onChange={handleInputChange} value={formData.quantity} disabled={disabledCondition} />
 								</FloatingLabel>
 							</Form.Group>
 							<Form.Group as={Col} className="mb-3">
 								<FloatingLabel label="Image" controlId="floatingImage">
-									<Form.Control
-										type="file"
-										accept="image/*"
-										name="image"
-										onChange={handleImageChange1}
-										disabled={disabledCondition}
-									/>
+									<Form.Control type="file" accept="image/*" name="image" onChange={handleImageChange1} disabled={disabledCondition} />
 								</FloatingLabel>
 							</Form.Group>
 						</Row>
