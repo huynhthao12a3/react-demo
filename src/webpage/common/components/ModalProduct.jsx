@@ -64,7 +64,7 @@ function ModalProduct(props) {
 		// });
 	};
 
-	const handleImageChange1 = async (event) => {
+	const handleImageChangeVercel = async (event) => {
 		const formDataImage = new FormData();
 		formDataImage.append("file", event.target.files[0]);
 		const blob = await put(event.target.files[0].name, event.target.files[0], { access: "public" });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { fileApi, productApi } from "../../api";
-import { ImageItem, ModalProduct } from "../common/components";
+import { ImageItem, Loading, ModalProduct, Picture } from "../common/components";
 import { Button, FloatingLabel, Form, Image, Table } from "react-bootstrap";
 import swal from "sweetalert";
 
@@ -12,6 +12,7 @@ function ProductView(props) {
 	const [status, setStatus] = useState("");
 	const [showModalNewProduct, setShowModalNewProduct] = useState(false);
 	const [productInformation, setProductInformation] = useState({});
+	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		fetchData();
 	}, []);
@@ -28,7 +29,13 @@ function ProductView(props) {
 	// Call API
 	const fetchData = async () => {
 		const response = await productApi.getProductByName(inputValue);
-		setData(response.data);
+		if (response.isSuccess) {
+			setIsLoading(false);
+			setData(response.data);
+		} else {
+			setIsLoading(false);
+			swal("Warning", response.message, "warning");
+		}
 	};
 	const deleteData = async (productId) => {
 		const response = await productApi.deleteProductById(productId);
@@ -92,67 +99,70 @@ function ProductView(props) {
 
 	return (
 		<>
-			<div>
-				<div className="mb-5">
-					<form onSubmit={handleSubmit} className="form-inline">
-						<div className="d-flex mx-4 p-4 border border-3 rounded">
-							<FloatingLabel label="Search by Product Name..." className="flex-grow-1">
-								<Form.Control value={inputValue} onChange={handleInputChange} name="id" type="text" id="search" placeholder="id" />
-							</FloatingLabel>
-							<Button type="submit" variant="primary" className="px-4 mx-2">
-								<i className="bi bi-search fs-3"></i>
-							</Button>
-							<Button type="button" variant="success" className="px-4 mx-2" onClick={handleAddNewProduct} data-toggle="modal" data-target="#popupNewProduct">
-								<i className="bi bi-plus-circle fs-3"></i>
-							</Button>
-						</div>
-					</form>
-				</div>
+			{isLoading ? (
+				<Loading />
+			) : (
+				<div>
+					<div className="mb-5">
+						<form onSubmit={handleSubmit} className="form-inline">
+							<div className="d-flex mx-4 p-4 border border-3 rounded">
+								<FloatingLabel label="Search by Product Name..." className="flex-grow-1">
+									<Form.Control value={inputValue} onChange={handleInputChange} name="id" type="text" id="search" placeholder="id" />
+								</FloatingLabel>
+								<Button type="submit" variant="primary" className="px-4 mx-2">
+									<i className="bi bi-search fs-3"></i>
+								</Button>
+								<Button type="button" variant="success" className="px-4 mx-2" onClick={handleAddNewProduct} data-toggle="modal" data-target="#popupNewProduct">
+									<i className="bi bi-plus-circle fs-3"></i>
+								</Button>
+							</div>
+						</form>
+					</div>
 
-				<Table striped bordered hover responsive>
-					<thead className="thead-light">
-						<tr>
-							<th>Product Name</th>
-							<th>Remark</th>
-							<th>Input Price</th>
-							<th>Output Price</th>
-							<th>Input Date</th>
-							<th>Quantity</th>
-							<th>Expired Date</th>
-							<th>Image</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{data.map((item, index) => (
-							<tr key={index} onDoubleClick={() => handleDoubleClick(item)}>
-								<td>{item.productName}</td>
-								<td>{item.remark}</td>
-								<td>{item.inputPrice}</td>
-								<td>{item.outputPrice}</td>
-								<td>{item.inputDate}</td>
-								<td>{item.quantity}</td>
-								<td>{item.expiredDate}</td>
-								<td>
-									<ImageItem filePath={item.image} height={50} />
-								</td>
-								<td className="d-flex justify-content-around">
-									<Button variant="info" onClick={() => handleInfoProduct(item)}>
-										<i className="bi bi-info-circle"></i>
-									</Button>
-									<Button variant="success" onClick={() => handleUpdateProduct(item)}>
-										<i className="bi bi-pencil-square"></i>
-									</Button>
-									<Button variant="danger" onClick={() => handleDeleteProduct(item)}>
-										<i className="bi bi-x-circle"></i>
-									</Button>
-								</td>
+					<Table striped bordered hover responsive>
+						<thead className="thead-light text-center">
+							<tr>
+								<th>Product Name</th>
+								<th>Remark</th>
+								<th>Input Price</th>
+								<th>Output Price</th>
+								<th>Input Date</th>
+								<th>Quantity</th>
+								<th>Expired Date</th>
+								<th>Image</th>
+								<th>Action</th>
 							</tr>
-						))}
-					</tbody>
-				</Table>
-			</div>
-
+						</thead>
+						<tbody>
+							{data.map((item, index) => (
+								<tr key={index} onDoubleClick={() => handleDoubleClick(item)} className="text-center">
+									<td>{item.productName}</td>
+									<td>{item.remark}</td>
+									<td>{item.inputPrice}</td>
+									<td>{item.outputPrice}</td>
+									<td>{item.inputDate}</td>
+									<td>{item.quantity}</td>
+									<td>{item.expiredDate}</td>
+									<td>
+										<Picture filePath={item.image} height={50} />
+									</td>
+									<td className="d-flex justify-content-around">
+										<Button variant="info" onClick={() => handleInfoProduct(item)}>
+											<i className="bi bi-info-circle"></i>
+										</Button>
+										<Button variant="success" onClick={() => handleUpdateProduct(item)}>
+											<i className="bi bi-pencil-square"></i>
+										</Button>
+										<Button variant="danger" onClick={() => handleDeleteProduct(item)}>
+											<i className="bi bi-x-circle"></i>
+										</Button>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</Table>
+				</div>
+			)}
 			{showModalNewProduct && <ModalProduct modalProps={modalProps} />}
 		</>
 	);

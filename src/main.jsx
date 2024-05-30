@@ -10,7 +10,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { Container } from "react-bootstrap";
 
 // Component
-import { Footer, Navigation } from "./webpage/common/components";
+import { Footer, Navigation, ImageItem } from "./webpage/common/components";
 import { About, Contact, Home, Login } from "./webpage/components";
 import { FileView, ProductView } from "./webpage/views";
 
@@ -33,17 +33,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<BasicLayout />}>
+					<Route path="/app" element={hasToken ? <Home /> : <Login />}></Route>
 					<Route path="/home" element={hasToken ? <Home /> : <Login />}></Route>
 					<Route path="/about" element={hasToken ? <About /> : <Login />}></Route>
 					<Route path="/contact" element={hasToken ? <Contact /> : <Login />}></Route>
-					<Route path="/app" element={hasToken ? <Home /> : <Login />}></Route>
-					{/* <Route path="/contact-us" element={hasToken ? <ContactUs /> : <Login />}></Route> */}
-					{/* <Route path="/" element={<Login />}></Route> */}
-					{/* <Route path="/about" element={<About />}></Route> */}
-					<Route path="/" element={<Login />}></Route>
 					<Route path="/product" element={<ProductView />}></Route>
 					<Route path="/file" element={<FileView />}></Route>
+					<Route path="/" element={<Login />}></Route>
 				</Route>
+				<Route path="/file/:filePath" element={<ImageItem />}></Route>
 			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>
