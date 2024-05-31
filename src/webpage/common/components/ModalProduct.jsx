@@ -8,8 +8,8 @@ import { fileApi, productApi } from "../../../api";
 import { put } from "@vercel/blob";
 
 function ModalProduct(props) {
-	console.log(process.env.BLOB_READ_WRITE_TOKEN);
-	console.log(import.meta.env.BLOB_READ_WRITE_TOKEN);
+	// console.log(process.env.VITE_READ_WRITE_TOKEN);
+	console.log(import.meta.env.VITE_READ_WRITE_TOKEN);
 	console.log(props);
 	if (!props.modalProps) {
 		props.modalProps = {
