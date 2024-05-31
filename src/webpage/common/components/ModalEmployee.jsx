@@ -88,27 +88,25 @@ function ModalEmployee(props) {
 							</Form.Group>
 						</Row>
 						<Form.Group className="mb-3">
-							<InputGroup>
-								<FloatingLabel label="Adress" controlId="floatingAdress">
-									<Form.Control
-										className="h-25"
-										as="textarea"
-										placeholder="Adress"
-										name="employeeAddress"
-										onChange={handleInputChange}
-										value={formData.employeeAddress}
-										rows={5}
-										disabled={disabledCondition}
-									/>
-								</FloatingLabel>
-							</InputGroup>
+							<FloatingLabel label="Address" controlId="floatingAddress">
+								<Form.Control
+									className="h-25"
+									as="textarea"
+									placeholder="Address"
+									name="employeeAddress"
+									onChange={handleInputChange}
+									value={formData.employeeAddress}
+									rows={5}
+									disabled={disabledCondition}
+								/>
+							</FloatingLabel>
 						</Form.Group>
 						<Row>
 							<Form.Group as={Col} className="mb-3">
 								<FloatingLabel label="Input Date" controlId="floatingInputDate">
 									<Form.Control
 										type="Date"
-										placeholder="Input Date"
+										placeholder="Hire Date"
 										name="employeeHireDate"
 										onChange={handleInputChange}
 										value={formData.employeeHireDate ? new Date(formData.employeeHireDate).toISOString().substring(0, 10) : new Date("1970-01-01").toISOString().substring(0, 10)}

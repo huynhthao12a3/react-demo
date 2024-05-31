@@ -15,7 +15,6 @@ import { About, Contact, Home, Login } from "./webpage/components";
 import { EmployeeView, FileView, ProductView } from "./webpage/views";
 
 const hasToken = !!localStorage.getItem("token");
-
 function BasicLayout() {
 	return (
 		<div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
@@ -32,16 +31,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<BasicLayout />}>
-					<Route path="/app" element={hasToken ? <Home /> : <Login />}></Route>
-					<Route path="/home" element={hasToken ? <Home /> : <Login />}></Route>
-					<Route path="/about" element={hasToken ? <About /> : <Login />}></Route>
-					<Route path="/contact" element={hasToken ? <Contact /> : <Login />}></Route>
+				<Route path="" element={<BasicLayout />}>
+					<Route path="/" element={<Home />}></Route>
+					<Route path="/home" element={<Home />}></Route>
+					<Route path="/about" element={<About />}></Route>
+					<Route path="/contact" element={<Contact />}></Route>
 					<Route path="/product" element={<ProductView />}></Route>
 					<Route path="/employee" element={<EmployeeView />}></Route>
 					<Route path="/file" element={<FileView />}></Route>
-					<Route path="/" element={<Login />}></Route>
 				</Route>
+				<Route path="/login" element={<Login />}></Route>
+
 				<Route path="/file/:filePath" element={<ImageItem />}></Route>
 			</Routes>
 		</BrowserRouter>
