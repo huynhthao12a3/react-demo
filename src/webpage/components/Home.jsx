@@ -7,23 +7,32 @@ function HomeContent() {
 			{/* Jumbotron */}
 			<div className="jumbotron jumbotron-fluid">
 				<div className="container">
-					<h1 className="display-4">Welcome to Your Website</h1>
-					<p className="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec varius purus.</p>
-					<a className="btn btn-primary btn-lg" href="#" role="button">
+					<h1 className="display-4">Welcome to My Website</h1>
+					<p className="lead fw-bold">My name is HuynhThao.</p>
+					<p className="lead">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec varius purus.
+					</p>
+					<a className="btn btn-primary btn-lg mt3" href="#" role="button">
 						Learn more
 					</a>
 				</div>
 			</div>
 			{/* Main Content */}
-			<div className="container">
+			<div className="container mt-5">
 				<div className="row">
 					<div className="col-md-6">
 						<h2>Section 1</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec varius purus. Quisque sollicitudin, neque non venenatis tincidunt, velit nisi consectetur eros.</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec varius purus. Quisque
+							sollicitudin, neque non venenatis tincidunt, velit nisi consectetur eros.
+						</p>
 					</div>
 					<div className="col-md-6">
 						<h2>Section 2</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec varius purus. Quisque sollicitudin, neque non venenatis tincidunt, velit nisi consectetur eros.</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec varius purus. Quisque
+							sollicitudin, neque non venenatis tincidunt, velit nisi consectetur eros.
+						</p>
 					</div>
 				</div>
 			</div>

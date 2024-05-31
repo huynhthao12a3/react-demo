@@ -17,6 +17,10 @@ const fileApi = {
 			},
 		});
 	},
+	deleteFile: (filePath) => {
+		const url = `/tds/file/delete-file`;
+		return axiosClient.delete(url, { params: { filePath: filePath } });
+	},
 };
 
 export default fileApi;

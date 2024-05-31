@@ -61,19 +61,29 @@ function Login(props) {
 						<Link to="./home" className="py-5">
 							<img src={tkg_logo} alt="TDS" width={200} />
 						</Link>
-						<p className="fs-5 fw-bold">Xin chào!</p>
-						<p>Nếu chưa có tài khoản, vui lòng đăng ký tại đây.</p>
+						<p className="fs-5 fw-bold">Hello!</p>
+						<p>If you don't have an account, please register here.</p>
 						<button onClick={toggleForm} className="px-4 py-2 rounded-3">
-							Đăng ký
+							Register
 						</button>
 					</div>
 					<div className="formBx">
 						<form onSubmit={handleSubmitFrom}>
-							<h2>Đăng nhập hệ thống</h2>
-							<input type="text" placeholder="Tên tài khoản / email" name="username" onChange={handleInputChange} />
-							<input type="password" placeholder="Mật khẩu" name="password" onChange={handleInputChange} />
+							<h2>Login</h2>
+							<input
+								type="text"
+								placeholder="Tên tài khoản / email"
+								name="username"
+								onChange={handleInputChange}
+							/>
+							<input
+								type="password"
+								placeholder="Mật khẩu"
+								name="password"
+								onChange={handleInputChange}
+							/>
 							<button type="submit" className="px-4 py-2 rounded-3 text-light mt-2">
-								Đăng nhập <i className="bi bi-box-arrow-in-right"></i>
+								Login <i className="bi bi-box-arrow-in-right"></i>
 							</button>
 						</form>
 					</div>
@@ -81,22 +91,31 @@ function Login(props) {
 				<div className="user signupBx">
 					<div className="formBx">
 						<form onSubmit={handleSubmitFromRegister}>
-							<h2>Đăng ký tài khoản</h2>
+							<h2>Register account</h2>
 							<div className="w-100 position-relative">
-								<img src={tkg_logo} className=" mx-auto d-block img-fluid rounded-pill" alt="Preview Register " style={{ width: "100px" }} />
-								<input type="file" className="w-100 h-100 position-absolute start-0 end-0 top-0 bottom-0" style={{ opacity: 0 }} />
+								<img
+									src={tkg_logo}
+									className=" mx-auto d-block img-fluid rounded-pill"
+									alt="Preview Register "
+									style={{ width: "100px" }}
+								/>
+								<input
+									type="file"
+									className="w-100 h-100 position-absolute start-0 end-0 top-0 bottom-0"
+									style={{ opacity: 0 }}
+								/>
 							</div>
-							<input type="text" placeholder="Họ và tên" />
-							<input type="number" placeholder="Số điện thoại" />
+							<input type="text" placeholder="Fullname" />
+							<input type="number" placeholder="Phonenumber" />
 
-							<input type="text" placeholder="Địa chỉ" />
-							<input type="text" placeholder="Tên đăng nhập" />
+							<input type="text" placeholder="Address" />
+							<input type="text" placeholder="Username" />
 
-							<input type="password" placeholder="Mật khẩu (> 6 kí tự)" />
-							<input type="password" placeholder="Nhập lại mật khẩu" />
+							<input type="password" placeholder="Password (> 6 character)" />
+							<input type="password" placeholder="Re-input password" />
 
 							<button type="submit" className="d-block px-4 py-2 rounded-3 text-light mt-2">
-								Đăng ký <i className="bi bi-box-arrow-in-right"></i>
+								Register <i className="bi bi-box-arrow-in-right"></i>
 							</button>
 						</form>
 					</div>
@@ -104,10 +123,10 @@ function Login(props) {
 						<Link to="./home" className="py-5">
 							<img src={tkg_logo} alt="TDS" width={200} />
 						</Link>
-						<p className="fs-5 fw-bold">Xin chào!</p>
-						<p>Nếu đã có tài khoản, vui lòng đăng nhập tại đây.</p>
+						<p className="fs-5 fw-bold">Hello!</p>
+						<p>If you already have an account, please log in here.</p>
 						<button type="submit" onClick={toggleForm} className="px-4 py-2 rounded-3">
-							Đăng nhập
+							Login
 						</button>
 					</div>
 				</div>

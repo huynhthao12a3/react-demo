@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Outlet, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Outlet, Route, Router, Routes } from "react-router-dom";
 import "./index.css";
 
 // Bootstrap
@@ -11,7 +11,7 @@ import { Container } from "react-bootstrap";
 
 // Component
 import { Footer, Navigation, ImageItem } from "./webpage/common/components";
-import { About, Contact, Home, Login } from "./webpage/components";
+import { About, Contact, Home, Login, NotFound } from "./webpage/components";
 import { EmployeeView, FileView, ProductView } from "./webpage/views";
 
 const hasToken = !!localStorage.getItem("token");
@@ -39,6 +39,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 					<Route path="/product" element={<ProductView />}></Route>
 					<Route path="/employee" element={<EmployeeView />}></Route>
 					<Route path="/file" element={<FileView />}></Route>
+					<Route path="*" element={<NotFound />}></Route>
 				</Route>
 				<Route path="/login" element={<Login />}></Route>
 
