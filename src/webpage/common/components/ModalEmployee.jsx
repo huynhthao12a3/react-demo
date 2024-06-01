@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import swal from "sweetalert";
 import { fileApi, employeeApi } from "../../../api";
-import { put } from "@vercel/blob";
 
 function ModalEmployee(props) {
 	// console.log(process.env.VITE_READ_WRITE_TOKEN);

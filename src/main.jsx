@@ -12,7 +12,7 @@ import { Container } from "react-bootstrap";
 // Component
 import { Footer, Navigation, ImageItem } from "./webpage/common/components";
 import { About, Contact, Home, Login, NotFound } from "./webpage/components";
-import { EmployeeView, FileView, ProductView, CategoryView } from "./webpage/views";
+import { EmployeeView, FileView, ProductView, CategoryView, CustomerView } from "./webpage/views";
 
 const hasToken = !!localStorage.getItem("token");
 function BasicLayout() {
@@ -40,6 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 					<Route path="/employee" element={<EmployeeView />}></Route>
 					<Route path="/file" element={<FileView />}></Route>
 					<Route path="/category" element={<CategoryView />}></Route>
+					<Route path="/customer" element={<CustomerView />}></Route>
 					<Route path="*" element={<NotFound />}></Route>
 				</Route>
 				<Route path="/login" element={<Login />}></Route>
