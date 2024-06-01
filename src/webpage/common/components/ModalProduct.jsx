@@ -9,7 +9,7 @@ import { put } from "@vercel/blob";
 
 function ModalProduct(props) {
 	// console.log(process.env.VITE_READ_WRITE_TOKEN);
-	console.log(import.meta.env.VITE_READ_WRITE_TOKEN);
+	// console.log(import.meta.env.VITE_READ_WRITE_TOKEN);
 	console.log(props);
 	if (!props.modalProps) {
 		props.modalProps = {
@@ -34,7 +34,7 @@ function ModalProduct(props) {
 	};
 
 	const handleImageChange = async (event) => {
-		console.log(event.target.files[0]);
+		// console.log(event.target.files[0]);
 		// const reader = new FileReader();
 		// const encoder = new TextEncoder();
 		// reader.readAsDataURL(event.target.files[0]);
@@ -72,7 +72,7 @@ function ModalProduct(props) {
 	};
 
 	const handleSubmit = async () => {
-		console.log("formData", formData);
+		// console.log("formData", formData);
 		const response = await productApi.createProduct(formData);
 		if (response.isSuccess) {
 			swal("Created", response.message, "success");

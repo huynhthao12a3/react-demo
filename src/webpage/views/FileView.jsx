@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 
 function FileView(props) {
 	const location = useLocation();
-	console.log(location);
+	// console.log(location);
 	const [fileList, setFileList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {

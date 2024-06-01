@@ -12,12 +12,7 @@ function Navigation(props) {
 		navigate("/login");
 	};
 	return (
-		<Navbar
-			id="client-navbar"
-			collapseOnSelect
-			expand="xl"
-			className="bg-light text-dark shadow border-bottom flex-shrink-0"
-		>
+		<Navbar id="client-navbar" collapseOnSelect expand="xl" className="bg-light text-dark shadow border-bottom flex-shrink-0">
 			<div className="container-fluid">
 				<Navbar.Brand href="/home">
 					<Image alt="logo" src={logo} width="200px" fluid />
@@ -47,11 +42,7 @@ function Navigation(props) {
 						</NavLink>
 
 						<Dropdown>
-							<Dropdown.Toggle
-								id="dropdown-nav"
-								className="bg-transparent border-0 w-100 h-100"
-								style={{ color: "#06A39F" }}
-							>
+							<Dropdown.Toggle id="dropdown-nav" className="bg-transparent border-0 w-100 h-100 text-start" style={{ color: "#06A39F" }}>
 								More
 							</Dropdown.Toggle>
 
@@ -91,29 +82,16 @@ function Navigation(props) {
 							</div>
 						) : (
 							<div className="d-flex text-end align-items-center">
-								<Link
-									to="/login"
-									className="text-decoration-none text-muted fw-bold border-end px-2 text-center"
-								>
+								<Link to="/login" className="text-decoration-none text-muted fw-bold border-end px-2 text-center">
 									Login
 								</Link>
-								<Link
-									to="/register"
-									className="text-decoration-none text-muted fw-bold border-start px-2 text-center"
-								>
+								<Link to="/register" className="text-decoration-none text-muted fw-bold border-start px-2 text-center">
 									Register
 								</Link>
 							</div>
 						)}
 
-						<img
-							id="admin-img-avatar"
-							src={logo}
-							alt=""
-							width="40"
-							height="40"
-							className=" rounded-circle border p-1"
-						/>
+						<img id="admin-img-avatar" src={logo} alt="" width="40" height="40" className=" rounded-circle border p-1" />
 					</div>
 				</Navbar.Collapse>
 			</div>

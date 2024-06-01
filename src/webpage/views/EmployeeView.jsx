@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { fileApi, employeeApi } from "../../api";
 import { ImageItem, Loading, Picture, ModalEmployee } from "../common/components";
-import { Button, FloatingLabel, Form, Image, Table } from "react-bootstrap";
+import { Button, FloatingLabel, Form, Image, Table, Tooltip, OverlayTrigger } from "react-bootstrap";
 import swal from "sweetalert";
 
 function EmployeeView(props) {
@@ -97,6 +97,32 @@ function EmployeeView(props) {
 		fetchData: fetchData,
 	};
 
+	// Tooltip
+	const infoTooltip = (props) => (
+		<Tooltip id="button-tooltip" {...props}>
+			Information
+		</Tooltip>
+	);
+	const updateTooltip = (props) => (
+		<Tooltip id="button-tooltip" {...props}>
+			Update
+		</Tooltip>
+	);
+	const deleteTooltip = (props) => (
+		<Tooltip id="button-tooltip" {...props}>
+			Delete
+		</Tooltip>
+	);
+	const searchTooltip = (props) => (
+		<Tooltip id="button-tooltip" {...props}>
+			Search
+		</Tooltip>
+	);
+	const addTooltip = (props) => (
+		<Tooltip id="button-tooltip" {...props}>
+			Add
+		</Tooltip>
+	);
 	return (
 		<>
 			{isLoading ? (
@@ -106,29 +132,19 @@ function EmployeeView(props) {
 					<div className="mb-5">
 						<form onSubmit={handleSubmit} className="form-inline">
 							<div className="d-flex mx-4 p-4 border border-3 rounded">
-								<FloatingLabel label="Search by Employee Name..." className="flex-grow-1">
-									<Form.Control
-										value={inputValue}
-										onChange={handleInputChange}
-										name="id"
-										type="text"
-										id="search"
-										placeholder="id"
-									/>
+								<FloatingLabel label="Search by Employee Name..." className="flex-grow-1 overflow-hidden">
+									<Form.Control value={inputValue} onChange={handleInputChange} name="id" type="text" id="search" placeholder="id" />
 								</FloatingLabel>
-								<Button type="submit" variant="primary" className="px-4 mx-2">
-									<i className="bi bi-search fs-3"></i>
-								</Button>
-								<Button
-									type="button"
-									variant="success"
-									className="px-4 mx-2"
-									onClick={handleAddNewEmployee}
-									data-toggle="modal"
-									data-target="#popupNewEmployee"
-								>
-									<i className="bi bi-plus-circle fs-3"></i>
-								</Button>
+								<OverlayTrigger placement="top" delay={{ show: 100, hide: 200 }} overlay={searchTooltip}>
+									<Button type="submit" variant="primary" className="px-4 mx-2">
+										<i className="bi bi-search fs-3"></i>
+									</Button>
+								</OverlayTrigger>
+								<OverlayTrigger placement="top" delay={{ show: 100, hide: 200 }} overlay={addTooltip}>
+									<Button type="button" variant="success" className="px-4 mx-2" onClick={handleAddNewEmployee} data-toggle="modal" data-target="#popupNewEmployee">
+										<i className="bi bi-plus-circle fs-3"></i>
+									</Button>
+								</OverlayTrigger>
 							</div>
 						</form>
 					</div>
@@ -155,15 +171,21 @@ function EmployeeView(props) {
 									<td>{item.employeeHireDate}</td>
 									<td>{item.employeeEndDate}</td>
 									<td className="d-flex justify-content-around">
-										<Button variant="info" onClick={() => handleInfoEmployee(item)}>
-											<i className="bi bi-info-circle"></i>
-										</Button>
-										<Button variant="success" onClick={() => handleUpdateEmployee(item)}>
-											<i className="bi bi-pencil-square"></i>
-										</Button>
-										<Button variant="danger" onClick={() => handleDeleteEmployee(item)}>
-											<i className="bi bi-x-circle"></i>
-										</Button>
+										<OverlayTrigger placement="top" delay={{ show: 100, hide: 200 }} overlay={infoTooltip}>
+											<Button variant="info" onClick={() => handleInfoEmployee(item)}>
+												<i className="bi bi-info-circle"></i>
+											</Button>
+										</OverlayTrigger>
+										<OverlayTrigger placement="top" delay={{ show: 100, hide: 200 }} overlay={updateTooltip}>
+											<Button variant="success" onClick={() => handleUpdateEmployee(item)}>
+												<i className="bi bi-pencil-square"></i>
+											</Button>
+										</OverlayTrigger>
+										<OverlayTrigger placement="top" delay={{ show: 100, hide: 200 }} overlay={deleteTooltip}>
+											<Button variant="danger" onClick={() => handleDeleteEmployee(item)}>
+												<i className="bi bi-x-circle"></i>
+											</Button>
+										</OverlayTrigger>
 									</td>
 								</tr>
 							))}

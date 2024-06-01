@@ -12,11 +12,11 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
 	function (config) {
 		// Do something before request is sent
-		console.group("=====> Request:");
-		console.log("Url: ", config.url);
-		console.log("Params: ", config.params);
-		console.log("Data: ", config.data);
-		console.groupEnd();
+		// console.group("=====> Request:");
+		// console.log("Url: ", config.url);
+		// console.log("Params: ", config.params);
+		// console.log("Data: ", config.data);
+		// console.groupEnd();
 		return config;
 	},
 	function (error) {
@@ -30,9 +30,9 @@ axiosClient.interceptors.response.use(
 	function (response) {
 		// Any status code that lie within the range of 2xx cause this function to trigger
 		// Do something with response data
-		console.group("==========> Response:");
-		console.log("Data: ", response.data);
-		console.groupEnd();
+		// console.group("==========> Response:");
+		// console.log("Data: ", response.data);
+		// console.groupEnd();
 		return response.data;
 	},
 	function (error) {

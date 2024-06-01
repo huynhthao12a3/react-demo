@@ -8,8 +8,8 @@ import swal from "sweetalert";
 function Login(props) {
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
-		username: "",
-		password: "",
+		username: "mor_2314",
+		password: "83r5^_",
 	});
 	const handleInputChange = (event) => {
 		setFormData({
@@ -19,9 +19,9 @@ function Login(props) {
 	};
 	const handleSubmitFrom = (event) => {
 		event.preventDefault();
-		console.group("Form data: ");
-		console.log(formData);
-		console.groupEnd();
+		// console.group("Form data: ");
+		// console.log(formData);
+		// console.groupEnd();
 		fetchData();
 	};
 	const handleSubmitFromRegister = (event) => {
@@ -41,9 +41,9 @@ function Login(props) {
 			})
 			.then(function (response) {
 				// if (response.ok) {
-				console.log(response);
+				// console.log(response);
 				if (response.data.token) {
-					console.log("Login success.");
+					// console.log("Login success.");
 					localStorage.setItem("token", response.data.token);
 					navigate("/home");
 				}
@@ -70,18 +70,10 @@ function Login(props) {
 					<div className="formBx">
 						<form onSubmit={handleSubmitFrom}>
 							<h2>Login</h2>
-							<input
-								type="text"
-								placeholder="Tên tài khoản / email"
-								name="username"
-								onChange={handleInputChange}
-							/>
-							<input
-								type="password"
-								placeholder="Mật khẩu"
-								name="password"
-								onChange={handleInputChange}
-							/>
+							<input type="text" placeholder="Tên tài khoản / email" name="username" onChange={handleInputChange} />
+							<p>mor_2314</p>
+							<input type="password" placeholder="Mật khẩu" name="password" onChange={handleInputChange} />
+							<p>83r5^_</p>
 							<button type="submit" className="px-4 py-2 rounded-3 text-light mt-2">
 								Login <i className="bi bi-box-arrow-in-right"></i>
 							</button>
@@ -93,17 +85,8 @@ function Login(props) {
 						<form onSubmit={handleSubmitFromRegister}>
 							<h2>Register account</h2>
 							<div className="w-100 position-relative">
-								<img
-									src={tkg_logo}
-									className=" mx-auto d-block img-fluid rounded-pill"
-									alt="Preview Register "
-									style={{ width: "100px" }}
-								/>
-								<input
-									type="file"
-									className="w-100 h-100 position-absolute start-0 end-0 top-0 bottom-0"
-									style={{ opacity: 0 }}
-								/>
+								<img src={tkg_logo} className=" mx-auto d-block img-fluid rounded-pill" alt="Preview Register " style={{ width: "100px" }} />
+								<input type="file" className="w-100 h-100 position-absolute start-0 end-0 top-0 bottom-0" style={{ opacity: 0 }} />
 							</div>
 							<input type="text" placeholder="Fullname" />
 							<input type="number" placeholder="Phonenumber" />
