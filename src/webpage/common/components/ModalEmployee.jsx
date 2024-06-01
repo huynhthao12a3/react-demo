@@ -66,15 +66,7 @@ function ModalEmployee(props) {
 						</Form.Group>
 						<Form.Group className="mb-3">
 							<FloatingLabel label="Phone" controlId="floatingPhone">
-								<Form.Control
-									className="h-25"
-									placeholder="employeePhone"
-									name="employeePhone"
-									onChange={handleInputChange}
-									value={formData.employeePhone}
-									rows={5}
-									disabled={disabledCondition}
-								/>
+								<Form.Control type="number" placeholder="employeePhone" name="employeePhone" onChange={handleInputChange} value={formData.employeePhone} disabled={disabledCondition} />
 							</FloatingLabel>
 						</Form.Group>
 						<Row>
