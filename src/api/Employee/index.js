@@ -2,7 +2,7 @@ import axiosClient from "../axiosClient";
 
 const employeeApi = {
 	getAllEmployee: () => {
-		const url = "/tds/employee/get-all-employee";
+		const url = "/tds/employee/get-all-employees";
 		return axiosClient.get(url);
 	},
 	getEmployeeById: (employeeId) => {

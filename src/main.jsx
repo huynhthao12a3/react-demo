@@ -14,6 +14,10 @@ import { Footer, Navigation, ImageItem } from "./webpage/common/components";
 import { About, Contact, Home, Login, NotFound } from "./webpage/components";
 import { EmployeeView, FileView, ProductView, CategoryView, CustomerView } from "./webpage/views";
 
+import cronJob from "../cronJob";
+
+cronJob.start();
+
 const hasToken = !!localStorage.getItem("token");
 function BasicLayout() {
 	return (
