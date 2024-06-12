@@ -1,12 +1,11 @@
 import { employeeApi } from "./src/api";
 
-const cronJob = async () => {
+export default async function handler(request, response) {
 	const date = new Date();
-	const response = await employeeApi.getAllEmployee();
+	const res = await employeeApi.getAllEmployee();
 	console.group(" =====> Cron Job");
 	console.log("At Twelve Minutes: ", date);
-	console.log("Data: ", response);
+	console.log("Data: ", res);
 	console.groupEnd();
-};
-
-export default cronJob;
+	return response.json(...res);
+}
